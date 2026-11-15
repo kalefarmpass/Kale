@@ -5,11 +5,9 @@ jobs:
   vnc:
     runs-on: windows-latest
     steps:
-      - name: Install TightVNC
+      - name: Install TightVNC (Chocolatey)
         shell: powershell
-        run: |
-          Invoke-WebRequest -Uri "https://www.tightvnc.com/download/2.8.81/tightvnc-2.8.81-setup-64bit.msi" -OutFile tightvnc.msi
-          Start-Process msiexec -ArgumentList '/i','tightvnc.msi','/qn','ADDLOCAL=Server' -Wait
+        run: choco install tightvnc -y --no-progress
 
       - name: Set VNC password
         shell: cmd
